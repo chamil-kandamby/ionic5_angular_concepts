@@ -1,7 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ActiveUsersData } from './data/user-details.data';
 
+import { ActiveUserData } from './data/active-user.data';
 import { UserHttpService } from './http/http-user.service';
 
 
@@ -14,7 +14,7 @@ import { UserHttpService } from './http/http-user.service';
   providers: [
     UserHttpService,
 
-    ActiveUsersData
+    ActiveUserData
   ],
 })
 export class ServiceModule { }

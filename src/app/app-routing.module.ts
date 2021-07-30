@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { LoginGuard } from './core/guards/login.guard';
+import { LoginAccessGuard } from './core/guards/login-access.guard';
 import { SystemAccessGuard } from './core/guards/system-access.guard';
 
 
@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: "auth",
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
-    canActivate: [LoginGuard]
+    canActivate: [LoginAccessGuard]
   },
   {
     path: 'app',

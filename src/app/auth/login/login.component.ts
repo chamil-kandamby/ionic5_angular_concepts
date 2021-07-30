@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { LoginRequest } from 'src/app/model/auth/login-request.model';
-import { ActiveUsersData } from 'src/app/service/data/user-details.data';
+import { ActiveUserData } from 'src/app/service/data/active-user.data';
+
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private loadingController: LoadingController,
-    private activeUsersData: ActiveUsersData
+    private activeUserData: ActiveUserData
   ) { }
 
   ngOnInit() {
@@ -49,11 +50,8 @@ export class LoginComponent implements OnInit {
       password: this.formController.password.value
     };
 
-    console.log('loginObj', loginObj);
-
     this.authService.LoginUser(loginObj).subscribe(async (data) => {
-      console.log(data);
-      this.activeUsersData.load().then(() => {
+      this.activeUserData.loadUserData().then(() => {
         loading.dismiss();
         this.router.navigateByUrl('/app', { replaceUrl: true });
       }).catch(() => {
