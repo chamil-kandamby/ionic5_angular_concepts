@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Shop Space</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <div class="input-group">
+      <ion-item>
+        <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <div *ngIf="isSubmitted && formController.email.errors" class="errors">
+        <span *ngIf="formController.email.errors?.required">Email is required</span>
+        <span *ngIf="formController.email.errors?.email">Email is invalid</span>
+      </div>
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="isSubmitted && formController.password.errors" class="errors">
+        <span *ngIf="formController.password.errors?.required">Password is required</span>
+        <span *ngIf="formController.password.errors?.minlength">Password needs to be 6 characters</span>
+      </div>
+    </div>
+
+    <ion-button type="submit" expand="block">Log in</ion-button>
+
+  </form>
+</ion-content>
