@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
 import { ApiRequest } from 'src/app/model/http/api-request.model';
 
 
-export class HttpBaseService {
+export abstract class HttpBaseService {
 
   private apiUrl: string = '';
 
